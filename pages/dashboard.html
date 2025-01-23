@@ -1,0 +1,188 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Informasi Sekolah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .dropdown-content {
+            display: none;
+            position: relative;
+            background-color: #333;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            margin-top: 10px;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #444;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Added for alignment */
+        .sidebar-nav li {
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-800 text-white h-screen flex flex-col">
+        <div class="text-center py-6">
+            <h2 class="text-2xl font-bold">TechSphere Academy</h2>
+            <div class="mt-4">
+                <div class="w-16 h-16 rounded-full bg-gray-600 mx-auto flex items-center justify-center">
+                    <span class="text-3xl">👤</span>
+                </div>
+            </div>
+        </div>
+        <nav class="flex-1">
+            <ul class="sidebar-nav space-y-4 px-4">
+                <li>
+                    <a href="#" class="text-gray-300 hover:text-white">
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="admin/sidebar/Pengumuman.html" class="text-gray-300 hover:text-white">
+                        Pengumuman
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="text-gray-300 hover:text-white">
+                        Profil
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="text-gray-300 hover:text-white">Pegawai</a>
+                    <div class="dropdown-content">
+                      <a href="admin/sidebar/data-pegawai.html">Data Pegawai</a>
+                      <a href="admin/sidebar/kelola-pegawai.html">Kelola Pegawai</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="admin/sidebar/siswa.html" class="text-gray-300 hover:text-white">
+                        Siswa
+                    </a>
+                </li>
+                <li>
+                    <a href="admin/sidebar/daftar-siswa.html" class="text-gray-300 hover:text-white">
+                        Kelas
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="px-4 py-4">
+            <a href="#" class="flex items-center justify-center bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded">
+                Logout
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1">
+        <header class="bg-blue-500 text-white p-4">
+            <div class="container mx-auto">
+                <h1 class="text-xl font-bold">Selamat Datang di TechSphere Academy</h1>
+                <p class="text-sm">Sistem Informasi yang dirancang untuk mempermudah pengelolaan data siswa, pegawai, kelas, dan kegiatan ekstrakurikuler. Mari bersama membangun generasi berprestasi.</p>
+            </div>
+        </header>
+
+        <main class="container mx-auto mt-6">
+            <!-- Prestasi Mahasiswa -->
+            <section class="bg-white shadow-md rounded-md p-6 mb-6">
+               <center><h2 class="text-lg font-bold mb-4">Prestasi Mahasiswa</h2></center>
+                <div class="flex justify-between">
+                  <div class="flex justify-center">
+                    <img src="https://cdn0-production-images-kly.akamaized.net/ynZjwuyEd8mX2IhvwrI3zILv4jo=/1200x1200/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/5013396/original/047677600_1732074234-tips-menjadi-siswa-berprestasi-di-sekolah.jpg" alt="Foto Prestasi 1" class="w-32 h-32 rounded-md shadow object-cover">
+                  </div>
+                  <div class="flex justify-center">
+                    <img src="https://files.oaiusercontent.com/file-ChXB7XYGRU7pGij9BcYrH3?se=2025-01-22T22%3A35%3A33Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D0c47d34c-d1a1-4495-b045-2059d1281703.webp&sig=prXMQajQdVZ1KfyCoXgOqHyfzDl62pfDyYefwc70e5U%3D" alt="Foto Prestasi 2" class="w-32 h-32 rounded-md shadow object-cover">
+                  </div>
+                </div>
+            </section>
+
+            <!-- Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-blue-500 text-white p-6 rounded-lg shadow">
+                  <h2 class="text-4xl font-bold">150</h2>
+                  <p class="mt-2">Data Siswa</p>
+                  <a href="admin/data-siswa.html" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+                <div class="bg-green-500 text-white p-6 rounded-lg shadow">
+                  <h2 class="text-4xl font-bold">25</h2>
+                  <p class="mt-2">Data Pegawai</p>
+                  <a href="admin/data-pegawai.html" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+                <div class="bg-yellow-500 text-white p-6 rounded-lg shadow">
+                  <h2 class="text-4xl font-bold">12</h2>
+                  <p class="mt-2">Kelas Aktif</p>
+                  <a href="admin/data-kelas.html" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Kegiatan Ekstra Kurikuler -->
+            <section class="bg-white shadow-md rounded-md p-6">
+               <center><h2 class="text-lg font-bold mb-4">Kegiatan Ekstra Kurikuler</h2></center>
+                <div class="grid grid-cols-3 gap-4">
+                    <div>
+                        <h3 class="font-bold mb-2">Pramuka</h3>
+                        <ul class="list-disc ml-5 text-gray-700">
+                            <li>Latihan Baris Berbaris</li>
+                            <li>Kemah Mingguan</li>
+                            <li>Pelatihan Survival</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-2">Seni</h3>
+                        <ul class="list-disc ml-5 text-gray-700">
+                            <li>Melukis</li>
+                            <li>Musik</li>
+                            <li>Teater</li>
+                        </ul>
+                    </div>
+                    <div>
+                      <h3 class="font-bold mb-2">Teknologi</h3>
+                      <ul class="list-disc ml-5 text-gray-700">
+                          <li>Coding</li>
+                          <li>Robotika</li>
+                          <li>Basis Data</li>
+                      </ul>
+                  </div>
+                    <div>
+                        <h3 class="font-bold mb-2">Paskibraka</h3>
+                        <ul class="list-disc ml-5 text-gray-700">
+                            <li>Latihan PBB</li>
+                            <li>Upacara Kenegaraan</li>
+                            <li>Pelatihan Disiplin</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="text-center text-gray-500 text-sm mt-6">
+                &copy; 2025 Sistem Informasi Sekolah NF. Semua Hak Dilindungi.
+            </footer>
+        </main>
+    </div>
+</body>
+</html>

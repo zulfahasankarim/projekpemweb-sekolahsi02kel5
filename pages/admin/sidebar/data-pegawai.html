@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Pegawai</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+      .dropdown-content {
+      display: none;
+      position: relative;
+      background-color: #333;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      margin-top: 10px;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #444;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+<div class="flex h-screen">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-gray-800 text-white flex flex-col">
+    <div class="flex items-center justify-center h-16 bg-gray-900">
+      <h1 class="text-xl font-bold">SEKOLAH.ID</h1>
+    </div>
+    <div class="p-4 text-center border-b border-gray-700">
+      <i class="fas fa-user-circle text-4xl"></i>
+      <p class="mt-2">Ahmad Admin</p>
+    </div>
+    <input type="text" placeholder="Search" class="p-2 mx-4 mt-4 rounded bg-gray-700 placeholder-gray-400 text-white focus:outline-none">
+    <nav class="mt-4 flex-grow">
+      <ul>
+        <li><a href="../../dashboard.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-home mr-2"></i>Dashboard</a></li>
+        <li><a href="Pengumuman.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-user mr-2"></i>Pengumuman</a></li>
+        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-user mr-2"></i>Profil</a></li>
+        <li class="dropdown">
+          <a href="" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-users mr-2"></i>Pegawai</a>
+          <div class="dropdown-content">
+            <a href="data-pegawai.html">Data Pegawai</a>
+            <a href="kelola-pegawai.html">Kelola Pegawai</a>
+          </div>
+        </li>
+        <li><a href="siswa.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-graduation-cap mr-2"></i>Siswa</a></li>
+        <li><a href="daftar-siswa.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-door-open mr-2"></i>Kelas</a></li>
+      </ul>
+    </nav>
+    <a href="logout.html" class="block py-2 px-4 bg-red-600 text-center hover:bg-red-700"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-grow p-6">
+    <header>
+      <nav class="text-sm text-gray-600">
+        <a href="#" class="text-blue-500">Home</a> / Daftar Pegawai
+      </nav>
+      <h1 class="text-2xl font-bold mt-2">Data Pegawai</h1>
+    </header>
+
+    <!-- Table Section -->
+    <section class="mt-6">
+      <table class="w-full bg-white border border-gray-300">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="py-2 px-4 border">#</th>
+            <th class="py-2 px-4 border">Nama</th>
+            <th class="py-2 px-4 border">Jabatan</th>
+            <th class="py-2 px-4 border">Tmp Lahir</th>
+            <th class="py-2 px-4 border">Tgl Lahir</th>
+            <th class="py-2 px-4 border">Aktif</th>
+            <th class="py-2 px-4 border">Action</th>
+          </tr>
+        </thead>
+        <tbody id="pegawai-table">
+          <!-- Data Awal -->
+        </tbody>
+      </table>
+      <button onclick="openCreateModal()" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Create</button>
+    </section>
+  </main>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden">
+  <div class="bg-white p-6 rounded shadow-lg w-96">
+    <h2 class="text-xl font-bold mb-4" id="modal-title">Edit Pegawai</h2>
+    <form id="pegawai-form">
+      <input type="hidden" id="pegawai-id">
+      <div class="mb-2">
+        <label class="block text-gray-700">Nama:</label>
+        <input type="text" id="pegawai-nama" class="w-full p-2 border rounded">
+      </div>
+      <div class="mb-2">
+        <label class="block text-gray-700">Jabatan:</label>
+        <input type="text" id="pegawai-jabatan" class="w-full p-2 border rounded">
+      </div>
+      <div class="mb-2">
+        <label class="block text-gray-700">Tempat Lahir:</label>
+        <input type="text" id="pegawai-tmplahir" class="w-full p-2 border rounded">
+      </div>
+      <div class="mb-2">
+        <label class="block text-gray-700">Tanggal Lahir:</label>
+        <input type="date" id="pegawai-tgllahir" class="w-full p-2 border rounded">
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700">Aktif:</label>
+        <input type="checkbox" id="pegawai-aktif">
+      </div>
+      <div class="flex justify-end">
+        <button type="button" onclick="closeModal()" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 mr-2">Cancel</button>
+        <button type="button" onclick="savePegawai()" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const pegawaiTable = document.getElementById("pegawai-table");
+  const modal = document.getElementById("modal");
+  const form = document.getElementById("pegawai-form");
+  let pegawaiData = [
+    { id: 1, nama: "Budi Dharmawan", jabatan: "Kepala Sekolah", tmplahir: "Bogor", tgllahir: "2000-10-11", aktif: true },
+    { id: 2, nama: "Annisa Amalia", jabatan: "Wakil Kepala", tmplahir: "Surabaya", tgllahir: "2001-05-21", aktif: true }
+  ];
+
+  function renderTable() {
+    pegawaiTable.innerHTML = pegawaiData.map((pegawai, index) => `
+      <tr>
+        <td class="py-2 px-4 border text-center">${index + 1}</td>
+        <td class="py-2 px-4 border">${pegawai.nama}</td>
+        <td class="py-2 px-4 border">${pegawai.jabatan}</td>
+        <td class="py-2 px-4 border">${pegawai.tmplahir}</td>
+        <td class="py-2 px-4 border">${pegawai.tgllahir}</td>
+        <td class="py-2 px-4 border text-center">
+          <input type="checkbox" ${pegawai.aktif ? "checked" : ""} onchange="toggleAktif(${pegawai.id})">
+        </td>
+        <td class="py-2 px-4 border text-center">
+          <button onclick="openEditModal(${pegawai.id})" class="text-blue-600 hover:underline">View | Edit</button>
+        </td>
+      </tr>
+    `).join("");
+  }
+
+  function toggleAktif(id) {
+    const pegawai = pegawaiData.find(p => p.id === id);
+    pegawai.aktif = !pegawai.aktif;
+    renderTable();
+  }
+
+  function openEditModal(id) {
+    const pegawai = pegawaiData.find(p => p.id === id);
+    document.getElementById("modal-title").textContent = "Edit Pegawai";
+    document.getElementById("pegawai-id").value = pegawai.id;
+    document.getElementById("pegawai-nama").value = pegawai.nama;
+    document.getElementById("pegawai-jabatan").value = pegawai.jabatan;
+    document.getElementById("pegawai-tmplahir").value = pegawai.tmplahir;
+    document.getElementById("pegawai-tgllahir").value = pegawai.tgllahir;
+    document.getElementById("pegawai-aktif").checked = pegawai.aktif;
+    modal.classList.remove("hidden");
+  }
+
+  function openCreateModal() {
+    form.reset();
+    document.getElementById("modal-title").textContent = "Create Pegawai";
+    document.getElementById("pegawai-id").value = "";
+    modal.classList.remove("hidden");
+  }
+
+  function closeModal() {
+    modal.classList.add("hidden");
+  }
+
+  function savePegawai() {
+    const id = document.getElementById("pegawai-id").value;
+    const nama = document.getElementById("pegawai-nama").value;
+    const jabatan = document.getElementById("pegawai-jabatan").value;
+    const tmplahir = document.getElementById("pegawai-tmplahir").value;
+    const tgllahir = document.getElementById("pegawai-tgllahir").value;
+    const aktif = document.getElementById("pegawai-aktif").checked;
+
+    if (id) {
+      const pegawai = pegawaiData.find(p => p.id == id);
+      pegawai.nama = nama;
+      pegawai.jabatan = jabatan;
+      pegawai.tmplahir = tmplahir;
+      pegawai.tgllahir = tgllahir;
+      pegawai.aktif = aktif;
+    } else {
+      const newId = pegawaiData.length ? Math.max(...pegawaiData.map(p => p.id)) + 1 : 1;
+      pegawaiData.push({ id: newId, nama, jabatan, tmplahir, tgllahir, aktif });
+    }
+
+    renderTable();
+    closeModal();
+  }
+
+  renderTable();
+</script>
+
+</body>
+</html>

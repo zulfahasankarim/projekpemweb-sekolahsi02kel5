@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sidebar Example</title>
+<style>
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+.sidebar {
+  background-color: #333;
+  color: white;
+  width: 250px; /* Lebar sidebar */
+  height: 100vh;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto; /* Tambahkan scroll jika konten melebihi tinggi */
+}
+
+.sidebar input[type="text"] {
+  width: calc(100% - 20px); /* Sesuaikan lebar dengan padding */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: #444;
+  color: white;
+  border-radius: 5px; /* Tambahkan border radius */
+}
+
+.sidebar button {
+  background-color: #4CAF50; /* Warna hijau */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  width: calc(100% - 20px); /* Sesuaikan lebar dengan padding */
+  margin-bottom: 10px;
+  border-radius: 5px; /* Tambahkan border radius */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar li:hover {
+  background-color: #444;
+}
+
+.sidebar input[type="radio"] {
+  margin-right: 5px;
+  vertical-align: middle; /* Ratakan radio button dan teks */
+}
+
+.sidebar label {
+  display: block; /* Label akan mengisi satu baris */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 5px; /* Tambahkan border radius */
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #444;
+}
+
+.show {
+  display: block;
+}
+
+/* Icon */
+.sidebar i {
+  margin-right: 10px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <input type="text" placeholder="Search">
+  <button id="dashboardButton" class="dropdown-button">
+    <i class="fas fa-tachometer-alt"></i> Dashboard <i class="fas fa-caret-down"></i>
+  </button>
+  <div id="dashboardDropdown" class="dropdown-content">
+    <a href="sidebar/siswa.html">Dashboard v1</a>
+    <a href="dashboard2.html">Dashboard v2</a>
+    <a href="dashboard3.html">Dashboard v3</a>
+  </div>
+  <label><i class="fas fa-th"></i> Widgets</label>
+  <label><i class="fas fa-file"></i> Layout Options</label>
+  <label><i class="fas fa-chart-pie"></i> Charts</label>
+</div>
+
+<script>
+  document.getElementById('dashboardButton').addEventListener('click', function() {
+    document.getElementById('dashboardDropdown').classList.toggle('show');
+  });
+
+  // Menutup dropdown jika klik di luar
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropdown-button')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      for (var i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+</script>
+
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

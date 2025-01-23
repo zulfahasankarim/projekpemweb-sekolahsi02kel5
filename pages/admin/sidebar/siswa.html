@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pendaftaran Siswa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+      .dropdown-content {
+      display: none;
+      position: relative;
+      background-color: #333;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      margin-top: 10px;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #444;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+<div class="flex h-screen">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-gray-800 text-white flex flex-col">
+    <div class="flex items-center justify-center h-16 bg-gray-900">
+      <h1 class="text-xl font-bold">SEKOLAH.ID</h1>
+    </div>
+    <div class="p-4 text-center border-b border-gray-700">
+      <i class="fas fa-user-circle text-4xl"></i>
+      <p class="mt-2">Ahmad Admin</p>
+    </div>
+    <nav class="mt-4 flex-grow">
+      <ul>
+        <li><a href="../../dashboard.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-home mr-2"></i>Dashboard</a></li>
+        <li><a href="Pengumuman.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-user mr-2"></i>Pengumuman</a></li>
+        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-user mr-2"></i>Profil</a></li>
+        <li class="dropdown">
+          <a href="#" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-users mr-2"></i>Pegawai</a>
+          <div class="dropdown-content">
+            <a href="data-pegawai.html">Data Pegawai</a>
+            <a href="kelola-pegawai.html">Kelola Pegawai</a>
+          </div>
+        </li>
+        <li><a href="siswa.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-graduation-cap mr-2"></i>Siswa</a></li>
+        <li><a href="daftar-siswa.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-door-open mr-2"></i>Kelas</a></li>
+      </ul>
+    </nav>
+    <a href="logout.html" class="block py-2 px-4 bg-red-600 text-center hover:bg-red-700"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-grow p-6">
+    <header>
+      <h1 class="text-2xl font-bold">Pendaftaran Siswa</h1>
+    </header>
+
+    <section class="mt-6">
+      <form class="bg-white p-6 border border-gray-300 rounded shadow">
+        <div class="mb-4">
+          <label class="block text-gray-700">Nama Siswa:</label>
+          <input type="text" class="w-full p-2 border rounded" placeholder="Nama Siswa" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Tempat Lahir:</label>
+          <input type="text" class="w-full p-2 border rounded" placeholder="Tempat Lahir" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Tanggal Lahir:</label>
+          <input type="date" class="w-full p-2 border rounded" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Jenis Kelamin:</label>
+          <select class="w-full p-2 border rounded">
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">NIK:</label>
+          <input type="text" class="w-full p-2 border rounded" placeholder="NIK" required>
+        </div>
+        <div>
+            <label class="mb-1 block text-blue-900">Alamat:</label>
+            <div class="flex gap-4 items-start">
+                <select name="kelurahan" class="border border-blue-200 rounded p-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400" required>
+                    <option value="">Pilih Kelurahan</option>
+                    <option value="kelurahan1"></option>
+                    <option value="kelurahan2">Kajong</option>
+                    <option value="kelurahan2">Lante</option>
+                    <option value="kelurahan2">Lemarang</option>
+                    <option value="kelurahan2">Lonce</option>
+                </select>
+                <div class="flex items-center gap-2">
+                    <span class="text-blue-900">RT/RW</span>
+                    <input type="text" name="rt" class="border border-blue-200 rounded p-2 w-16 focus:ring-2 focus:ring-blue-400 focus:border-blue-400" required>
+                    <span class="text-blue-900">/</span>
+                    <input type="text" name="rw" class="border border-blue-200 rounded p-2 w-16 focus:ring-2 focus:ring-blue-400 focus:border-blue-400" required>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Nama Wali Murid:</label>
+          <input type="text" class="w-full p-2 border rounded" placeholder="Nama Wali Murid" required>
+        </div>
+        <div class="flex justify-end">
+          <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Simpan</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+</div>
+
+</body>
+</html>

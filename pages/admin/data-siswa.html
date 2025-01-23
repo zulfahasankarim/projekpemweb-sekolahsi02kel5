@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Siswa</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Navbar styling */
+    .navbar {
+      background-color: #f8f9fa; /* Warna latar navbar */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek kedalaman */
+    }
+
+    .navbar ul {
+      list-style-type: none; /* Menghilangkan bullet */
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+
+    .header li {
+      margin-right: 20px; /* Jarak antar item */
+    }
+
+    .header a {
+      text-decoration: none; /* Menghilangkan garis bawah */
+      color: #3070cf; /* Warna teks */
+      font-weight: bold; /* Menebalkan teks */
+      transition: color 0.3s; /* Efek transisi */
+    }
+
+    .header a:hover {
+      color: #189e54; /* Warna saat hover */
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .header h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #333;
+    }
+
+    .header button {
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .header button:hover {
+      background-color: #218838;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table thead tr {
+      background-color: #17a2b8;
+      color: #fff;
+      text-align: left;
+    }
+
+    table thead th {
+      padding: 10px;
+    }
+
+    table tbody tr {
+      border-bottom: 1px solid #ddd;
+    }
+
+    table tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    table tbody td {
+      padding: 10px;
+    }
+
+    .actions button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .actions button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 400px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .modal-header h3 {
+      margin: 0;
+    }
+
+    .modal-header button {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h2>Data Siswa</h2>
+    <a href="../dashboard.html">Home</a>
+    <a href="../contact.html">Contact</a>
+    <button onclick="showModal()">+ Tambah Siswa</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Nama</th>
+        <th>NIS</th>
+        <th>Kelas</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody id="siswa-table">
+      <tr>
+        <td>1</td>
+        <td>Aisyah</td>
+        <td>2O043834</td>
+        <td>XII IPA 3</td>
+        <td class="actions">
+          <button onclick="editStudent(this)">Edit</button>
+          <button style="background-color: #dc3545;" onclick="deleteStudent(this)">Hapus</button>
+        </td>
+      </tr>
+      <!-- Contoh siswa lainnya -->
+      <tr>
+        <td>2</td>
+        <td>Ahmad Fauzi</td>
+        <td>20139638</td>
+        <td>XII IPS 1</td>
+        <td class="actions">
+          <button onclick="editStudent(this)">Edit</button>
+          <button style="background-color: #dc3545;" onclick="deleteStudent(this)">Hapus</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal Form -->
+<div class="modal" id="siswa-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="modal-title">Tambah Siswa</h3>
+      <button onclick="closeModal()">&times;</button>
+    </div>
+    <form id="siswa-form" onsubmit="saveStudent(event)">
+      <div>
+        <label>Nama:</label>
+        <input type="text" id="nama" required>
+      </div>
+      <div>
+        <label>NIS:</label>
+        <input type="text" id="nis" required>
+      </div>
+      <div>
+        <label>Kelas:</label>
+        <input type="text" id="kelas" required>
+      </div>
+      <button type="submit" style="margin-top: 10px;">Simpan</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  let editMode = false;
+  let currentRow;
+
+  function showModal() {
+    document.getElementById('siswa-modal').classList.add('active');
+    document.getElementById('siswa-form').reset();
+    document.getElementById('modal-title').innerText = "Tambah Siswa";
+    editMode = false; // Reset edit mode
+  }
+
+  function closeModal() {
+    document.getElementById('siswa-modal').classList.remove('active');
+  }
+
+  function saveStudent(event) {
+    event.preventDefault();
+
+    const nama = document.getElementById('nama').value;
+    const nis = document.getElementById('nis').value;
+    const kelas = document.getElementById('kelas').value;
+
+    const table = document.getElementById('siswa-table');
+
+    if (editMode) {
+      currentRow.innerHTML = `
+        <td>${currentRow.cells[0].innerText}</td>
+        <td>${nama}</td>
+        <td>${nis}</td>
+        <td>${kelas}</td>
+        <td class="actions">
+          <button onclick="editStudent(this)">Edit</button>
+          <button style="background-color: #dc3545;" onclick="deleteStudent(this)">Hapus</button>
+        </td>
+      `;
+    } else {
+      const newRow = document.createElement('tr');
+      const rowCount = table.getElementsByTagName('tr').length + 1;
+
+      newRow.innerHTML = `
+        <td>${rowCount}</td>
+        <td>${nama}</td>
+        <td>${nis}</td>
+        <td>${kelas}</td>
+        <td class="actions">
+          <button onclick="editStudent(this)">Edit</button>
+          <button style="background-color: #dc3545;" onclick="deleteStudent(this)">Hapus</button>
+        </td>
+      `;
+
+      table.appendChild(newRow);
+    }
+
+    closeModal();
+  }
+
+  function deleteStudent(button) {
+    if (confirm("Apakah Anda yakin ingin menghapus data siswa ini?")) {
+      const row = button.parentElement.parentElement;
+      row.remove();
+      alert("Data siswa berhasil dihapus.");
+    }
+  }
+
+  function editStudent(button) {
+    currentRow = button.parentElement.parentElement; // Get the row to edit
+    const cells = currentRow.getElementsByTagName('td');
+
+    document.getElementById('nama').value = cells[1].innerText;
+    document.getElementById('nis').value = cells[2].innerText;
+    document.getElementById('kelas').value = cells[3].innerText;
+
+    showModal();
+    document.getElementById('modal-title').innerText = "Edit Siswa";
+    editMode = true; // Set edit mode
+  }
+</script>
+
+</body>
+</html>

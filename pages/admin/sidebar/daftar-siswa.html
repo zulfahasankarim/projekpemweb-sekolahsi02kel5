@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Siswa - Kelas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    .dropdown-content {
+      display: none;
+      position: relative;
+      background-color: #333;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      margin-top: 10px;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #444;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+  </style>
+</head>
+<body class="bg-gray-100">
+
+<div class="flex h-screen">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-gray-800 text-white flex flex-col">
+    <div class="flex items-center justify-center h-16 bg-gray-900">
+      <h1 class="text-xl font-bold">SEKOLAH.ID</h1>
+    </div>
+    <div class="p-4 text-center border-b border-gray-700">
+      <i class="fas fa-user-circle text-4xl"></i>
+      <p class="mt-2">Ahmad Admin</p>
+    </div>
+    <nav class="mt-4 flex-grow">
+      <ul>
+        <li><a href="../../dashboard.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-home mr-2"></i>Dashboard</a></li>
+        <li><a href="Pengumuman.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-user mr-2"></i>Pengumuman</a></li>
+        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-user mr-2"></i>Profil</a></li>
+        <li class="dropdown">
+          <a href="#" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-users mr-2"></i>Pegawai</a>
+          <div class="dropdown-content">
+            <a href="data-pegawai.html">Data Pegawai</a>
+            <a href="kelola-pegawai.html">Kelola Pegawai</a>
+          </div>
+        </li>
+        <li><a href="siswa.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-graduation-cap mr-2"></i>Siswa</a></li>
+        <li><a href="daftar-siswa.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-door-open mr-2"></i>Kelas</a></li>
+      </ul>
+    </nav>
+    <a href="logout.html" class="block py-2 px-4 bg-red-600 text-center hover:bg-red-700"><i class="fas fa-sign-out-alt"></i>Logout</a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-grow p-6">
+    <header class="flex justify-between items-center mb-4">
+      <nav class="text-sm text-gray-600">
+        <a href="#" class="text-blue-500">Home</a> / Daftar Siswa - Kelas
+      </nav>
+      <h1 class="text-xl font-bold">Daftar Siswa - Kelas</h1>
+    </header>
+
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-lg font-semibold">Tahun Akademik: 2024/25</h2>
+      <h2 class="text-lg font-semibold">Kelas: 7-A</h2>
+    </div>
+
+    <button class="mb-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onclick="openModal()">Tambah Siswa</button>
+
+    <table class="min-w-full bg-white border border-gray-300 rounded shadow">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="py-2 px-4 border">NIS</th>
+          <th class="py-2 px-4 border">Nama Lengkap</th>
+          <th class="py-2 px-4 border">Umur</th>
+          <th class="py-2 px-4 border">Kehadiran</th>
+          <th class="py-2 px-4 border">Aktif</th>
+          <th class="py-2 px-4 border">Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="student-table-body">
+        <!-- Data siswa akan ditambahkan di sini -->
+      </tbody>
+    </table>
+
+    <!-- Modal untuk Tambah/Edit Siswa -->
+    <div id="modal" class="fixed inset-0 bg-gray-700 bg-opacity-50 flex items-center justify-center hidden">
+      <div class="bg-white p-6 rounded shadow-lg w-1/3">
+        <h2 class="text-xl font-bold mb-4" id="modal-title">Tambah Siswa</h2>
+        <form id="student-form">
+          <input type="hidden" id="student-id">
+          <div class="mb-4">
+            <label class="block text-gray-700">NIS:</label>
+            <input type="text" id="nis" class="w-full p-2 border rounded" placeholder="NIS" required>
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700">Nama Lengkap:</label>
+            <input type="text" id="name" class="w-full p-2 border rounded" placeholder="Nama Lengkap" required>
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700">Umur:</label>
+            <input type="number" id="age" class="w-full p-2 border rounded" placeholder="Umur" required>
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700">Kehadiran:</label>
+            <input type="text" id="attendance" class="w-full p-2 border rounded" placeholder="Kehadiran" required>
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700">Aktif:</label>
+            <select id="active" class="w-full p-2 border rounded">
+              <option value="Ya">Ya</option>
+              <option value="Tidak">Tidak</option>
+            </select>
+          </div>
+          <div class="flex justify-end">
+            <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="saveStudent()">Simpan</button>
+            <button type="button" class="ml-2 bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400" onclick="closeModal()">Batal</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </main>
+
+</div>
+
+<script>
+  let students = [];
+  let editingIndex = -1;
+
+  function openModal() {
+    document.getElementById('modal').classList.remove('hidden');
+    document.getElementById('student-form').reset();
+    document.getElementById('modal-title').innerText = 'Tambah Siswa';
+    editingIndex = -1; // Reset editing index
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.add('hidden');
+  }
+
+  function saveStudent() {
+    const nis = document.getElementById('nis').value;
+    const name = document.getElementById('name').value;
+    const age = document.getElementById('age').value;
+    const attendance = document.getElementById('attendance').value;
+    const active = document.getElementById('active').value;
+
+    if (editingIndex === -1) {
+      // Add new student
+      students.push({ nis, name, age, attendance, active });
+    } else {
+      // Edit existing student
+      students[editingIndex] = { nis, name, age, attendance, active };
+    }
+
+    updateTable();
+    closeModal();
+  }
+
+  function editStudent(index) {
+    const student = students[index];
+    document.getElementById('nis').value = student.nis;
+    document.getElementById('name').value = student.name;
+    document.getElementById('age').value = student.age;
+    document.getElementById('attendance').value = student.attendance;
+    document.getElementById('active').value = student.active;
+
+    document.getElementById('modal').classList.remove('hidden');
+    document.getElementById('modal-title').innerText = 'Edit Siswa';
+    editingIndex = index; // Set editing index
+  }
+
+  function deleteStudent(index) {
+    if (confirm('Apakah Anda yakin ingin menghapus siswa ini?')) {
+      students.splice(index, 1);
+      updateTable();
+    }
+  }
+
+  function updateTable() {
+    const tableBody = document.getElementById('student-table-body');
+    tableBody.innerHTML = '';
+    students.forEach((student, index) => {
+      const row = `
+        <tr>
+          <td class="py-2 px-4 border">${student.nis}</td>
+          <td class="py-2 px-4 border">${student.name}</td>
+          <td class="py-2 px-4 border">${student.age}</td>
+          <td class="py-2 px-4 border">${student.attendance}</td>
+          <td class="py-2 px-4 border">${student.active}</td>
+          <td class="py-2 px-4 border">
+            <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" onclick="editStudent(${index})">Edit</button>
+            <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600" onclick="deleteStudent(${index})">Hapus</button>
+          </td>
+        </tr>
+      `;
+      tableBody.insertAdjacentHTML('beforeend', row);
+    });
+  }
+
+</script>
+
+
+</body>
+</html>
+t

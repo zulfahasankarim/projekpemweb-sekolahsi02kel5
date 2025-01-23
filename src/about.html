@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS */
+        .bg-hero {
+            background-image: url("https://png.pngtree.com/background/20230424/original/pngtree-school-building-with-a-view-of-mountains-and-clouds-picture-image_2455594.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background-color: #3182ce;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-to-top:hover {
+            background-color: #2b6cb0;
+        }
+        .text-shadow {
+      text-shadow: 5px 6px 7px rgba(0, 0, 0, 0.4);
+    }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="bg-blue-600 text-white py-4 fixed top-0 left-0 w-full z-10 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center px-9">
+            <a href="#home" class="text-2xl font-bold"><span class="text-blue-200">SMA HARAPAN</span> MULIA</a>
+            <ul class="flex space-x-9 text-sm font-semibold text-shadow">
+                <li><a href="#home" class="hover:text-blue-300">Home</a></li>
+                <li><a href="#about" class="hover:text-blue-300">Tentang</a></li>
+                <li><a href="#programs" class="hover:text-blue-300">Program</a></li>
+                <li><a href="#teachers" class="hover:text-blue-300">Guru</a></li>
+                <li><a href="#news" class="hover:text-blue-300">Berita</a></li>
+                <li><a href="#contact" class="hover:text-blue-300"></ul>
+                <body class="flex items-center justify-center min-h-screen bg-gray-100">
+                <button class="bg-blue-500 text-white font-semibold py-2 px-6 rounded-full hover:bg-white hover:text-blue-600">Contact</button>
+                </body>
+                </a></li>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="bg-hero h-screen flex items-center justify-center text-center text-white pt-16">
+        <div class="max-w-3xl">
+            <h1 class="text-4xl md:text-6xl font-bold">Selamat Datang di <br> SMA Harapan Mulia</h1>
+            <p class="mt-4 text-lg md:text-2xl">Pendidikan Berkualitas untuk Masa Depan Gemilang</p>
+            <a href="#programs" class="mt-6 inline-block bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-700">Jelajahi Program</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl font-bold text-blue-600">Tentang Kami</h1>
+            <p class="mt-4 text-gray-700">SMA Harapan Mulia
+
+                Sekolah Masa Depan yang Menginspirasi dan Memberdayakan
+                SMA Harapan Mulia adalah lembaga pendidikan menengah atas yang berdedikasi untuk mencetak generasi muda berprestasi, berintegritas, dan berkarakter mulia. Berdiri sejak [tahun berdiri], sekolah ini terus menjadi tempat bagi siswa untuk mengembangkan potensi akademik, sosial, dan emosional dengan dukungan fasilitas modern dan tenaga pendidik berkualitas.
+                
+                </p>
+        </div>
+         <!-- Visi dan Misi -->
+         <div class="mt-8">
+            <center><h2 class="text-2xl font-bold text-blue-600">Visi</h2>
+            <p class="mt-4 text-gray-700">
+                Mewujudkan generasi cerdas yang berkarakter mulia, kreatif, dan berdaya saing global. 
+            </p></center>
+            <center><h2 class="text-2xl font-bold text-blue-600 mt-8">Misi</h2>
+            <ul class="mt-4 text-gray-700 list-disc list-inside">
+                Memberikan pendidikan yang berbasis pada nilai-nilai moral, spiritual, dan budaya. <br>
+                Menyediakan lingkungan belajar yang kondusif untuk mendukung pengembangan potensi akademik dan non-akademik siswa. <br>
+                Mengintegrasikan teknologi dalam proses pembelajaran untuk mempersiapkan siswa menghadapi era digital.<br>
+                Membentuk generasi yang memiliki semangat kepemimpinan, kejujuran, dan tanggung jawab. <br>
+                Melahirkan lulusan yang siap bersaing di tingkat nasional maupun internasional. <br>
+            </ul></center>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="py-16">
+        <div class="p-6 bg-white rounded-lg shadow-lg text-center">
+            <img src="https://cdn.pixabay.com/photo/2017/02/24/02/37/classroom-2093743_960_720.jpg" alt="Program Akademik" class="w-full h-46 object-cover rounded-md">
+            <h3 class="text-xl font-bold text-blue-600 mt-4">Program Akademik</h3>
+            <p class="mt-2 text-gray-600">Meningkatkan kemampuan akademik siswa dengan metode pembelajaran terkini.</p>
+            <a href="#akademik" class="inline-block mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Pelajari Lebih Lanjut</a>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-lg text-center">
+            <img src="https://images.pexels.com/photos/1164572/pexels-photo-1164572.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+            <h3 class="text-xl font-bold text-blue-600 mt-4">Kegiatan Ekstrakulikuler</h3>
+            <p class="mt-2 text-gray-600">Beragam kegiatan untuk mengembangkan minat dan bakat siswa<br>Kegiatan ekstrakurikuler (ekskul) di SMP 1 Pamotan bisa berupa pramuka, paskibra, palang merah remaja (PMR), pencak silat, futsall, rohis, marawis, seni tari, dan lain-lain.</p>
+            <a href="#akademik" class="inline-block mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Pelajari Lebih Lanjut</a>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-lg text-center">
+            <img src="https://plus.unsplash.com/premium_photo-1681248156471-5682ce52c46c?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <h3 class="text-xl font-bold text-blue-600 mt-4">Pengembangan Karakter</h3>
+            <p class="mt-2 text-gray-600">Meningkatkan kemampuan akademik siswa dengan metode pembelajaran terkini.</p>
+            <a href="#akademik" class="inline-block mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Pelajari Lebih Lanjut</a>
+        </div>
+    </section>
+    <!-- Teachers Section -->
+    <section id="teachers" class="py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl font-bold text-blue-600">Guru Kami</h1>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                <div class="p-6 bg-white rounded-lg shadow-lg">
+                    <img src="https://files.oaiusercontent.com/file-Jmifz1Kef4qgyUxyyD2VL4?se=2025-01-21T16%3A04%3A28Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D9107c21d-18aa-495d-a812-aec2b90aa3e3.webp&sig=gezdhot7hhyNoGdfGJ9gbdA96cXsKiJly2XAgF5rb9U%3D" alt="Guru 1" class="w-32 h-32 mx-auto rounded-full">
+                    <h3 class="mt-4 text-xl font-bold text-blue-600">Ahmad Kurniawan</h3>
+                    <p class="text-gray-600">Mata Pelajaran: Matematika</p>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-lg">
+                    <img src="https://files.oaiusercontent.com/file-JMxPWyuUe2nmk5W1fU3vqg?se=2025-01-21T16%3A05%3A17Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D8d9b752b-f709-4042-bc74-2391b65e15e2.webp&sig=dluzMhAsB7qvOm7eGUQoxRUzp82TJcs8Fgc%2BWLMEmuM%3D" alt="Guru 2" class="w-32 h-32 mx-auto rounded-full">
+                    <h3 class="mt-4 text-xl font-bold text-blue-600">Kirana</h3>
+                    <p class="text-gray-600">Mata Pelajaran: Bahasa Inggris</p>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-lg">
+                    <img src="https://files.oaiusercontent.com/file-LVeCnSvcyV6wLcKaPbuzcH?se=2025-01-21T16%3A05%3A53Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dfc52dec4-2c98-46c8-826e-0c9913ad9913.webp&sig=pM2WSqWid5c5g9GzkOt52zAZf1niDnWjoHrMoq%2BPIYo%3D" alt="Guru 3" class="w-32 h-32 mx-auto rounded-full">
+                    <h3 class="mt-4 text-xl font-bold text-blue-600">Budi Santoso</h3>
+                    <p class="text-gray-600">Mata Pelajaran: Fisika</p>
+                </div>
+            </div>
+        </div>
+    </section>
+       <!-- News Section -->
+       <section id="news" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl font-bold text-blue-600">Berita Sekolah</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                <div class="p-6 bg-white rounded-lg shadow-lg">
+                    <img src="https://files.oaiusercontent.com/file-ANmW8KeQBDMWr3XM9rRYsW?se=2025-01-21T16%3A10%3A20Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dd3375c35-7dfe-4785-93fd-f25671f8170f.webp&sig=lga8I0P913xS4QUUCALUFVrQOrod4npowP4/4RwktvY%3D" alt="berita 1" class="w-32 h-32 mx-auto rounded-full">
+                    <h3 class="text-xl font-bold text-blue-600">SMA Harapan Mulia Raih Penghargaan Sekolah Berprestasi<h3>
+                    <p class="mt-2 text-gray-600">SMA Harapan Mulia baru saja menerima penghargaan sebagai "Sekolah Berprestasi Terbaik 2025" di tingkat provinsi. Penghargaan ini diberikan atas keberhasilan sekolah dalam mencetak siswa berprestasi di bidang akademik, seni, dan olahraga.</p><br>
+                    <a href="#" class="inline-block mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Baca Selengkapnya</a>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-lg">
+                    <img src="https://files.oaiusercontent.com/file-6E1Si2uqzY2eFhpJuz1So1?se=2025-01-21T16%3A20%3A36Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dbcd26441-0d75-416f-b736-5f842b425cec.webp&sig=qCoXAAD1J5047cSRxpubZ/zyD44oINWY1KcGzFXs5hM%3D" alt="berita 2" class="w-32 h-32 mx-auto rounded-full">
+                    <h3 class="text-xl font-bold text-blue-600">Ekstrakurikuler Seni SMA Harapan Mulia Mengukir Prestasi di Pentas Nasional</h3>
+                    <p class="mt-2 text-gray-600">Tim ekstrakurikuler seni SMA Harapan Mulia berhasil menyabet juara pertama pada ajang "Festival Seni dan Budaya Pelajar Nasional 2025". Tim ini menampilkan tari tradisional yang dipadukan dengan modernisasi, membawa pesan kearifan lokal yang mendapat apresiasi tinggi dari para juri.</p>
+                    <a href="#" class="inline-block mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Baca Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-blue-600">Hubungi Kami</h2>
+            <form class="mt-8 max-w-lg mx-auto">
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700">Nama</label>
+                    <input type="text" id="name" class="w-full mt-2 p-3 border border-gray-300 rounded-lg" placeholder="Nama Anda">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700">Email</label>
+                    <input type="email" id="email" class="w-full mt-2 p-3 border border-gray-300 rounded-lg" placeholder="Email Anda">
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block text-gray-700">Pesan</label>
+                    <textarea id="message" class="w-full mt-2 p-3 border border-gray-300 rounded-lg" rows="5" placeholder="Pesan Anda"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700">Kirim Pesan</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top">↑</button>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white py-4 text-center">
+        <p>&copy; 2025 Sekolah Hebat. Semua Hak Dilindungi.</p>
+        <div class="mt-4">
+            <a href="https://github.com" target="_blank" class="text-white hover:text-gray-300 mx-3"><i class="fab fa-github fa-2x"></i> GitHub</a>
+            <a href="https://instagram.com" target="_blank" class="text-white hover:text-gray-300 mx-3"><i class="fab fa-instagram fa-2x"></i> Instagram</a>
+            <a href="https://youtube.com" target="_blank" class="text-white hover:text-gray-300 mx-3"><i class="fab fa-youtube fa-2x"></i> YouTube</a>
+        </div>
+    </footer>
+
+    <script>
+        // Show/hide Back to Top button
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        // Scroll to top functionality
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+    </body>
+</html>

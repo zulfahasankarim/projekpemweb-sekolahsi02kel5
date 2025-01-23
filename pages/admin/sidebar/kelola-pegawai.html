@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tambah Pegawai</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+      .dropdown-content {
+      display: none;
+      position: relative;
+      background-color: #333;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      margin-top: 10px;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #444;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+<div class="flex h-screen">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-gray-800 text-white flex flex-col">
+    <div class="flex items-center justify-center h-16 bg-gray-900">
+      <h1 class="text-xl font-bold">SEKOLAH.ID</h1>
+    </div>
+    <div class="p-4 text-center border-b border-gray-700">
+      <i class="fas fa-user-circle text-4xl"></i>
+      <p class="mt-2">Ahmad Admin</p>
+    </div>
+    <input type="text" placeholder="Search" class="p-2 mx-4 mt-4 rounded bg-gray-700 placeholder-gray-400 text-white focus:outline-none">
+    <nav class="mt-4 flex-grow">
+      <ul>
+        <li><a href="../../dashboard.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-home mr-2"></i>Dashboard</a></li>
+        <li><a href="Pengumuman.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-user mr-2"></i>Pengumuman</a></li>
+        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-user mr-2"></i>Profil</a></li>
+        <li class="dropdown">
+          <a href="" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-users mr-2"></i>Pegawai</a>
+          <div class="dropdown-content">
+            <a href="data-pegawai.html">Data Pegawai</a>
+            <a href="kelola-pegawai.html">Kelola Pegawai</a>
+          </div>
+        </li>
+        <li><a href="siswa.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-graduation-cap mr-2"></i>Siswa</a></li>
+        <li><a href="kelas.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-door-open mr-2"></i>Kelas</a></li>
+      </ul>
+    </nav>
+    <a href="logout.html" class="block py-2 px-4 bg-red-600 text-center hover:bg-red-700"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-grow p-6">
+    <header>
+      <nav class="text-sm text-gray-600">
+        <a href="#" class="text-blue-500">Home</a> / Tambah Pegawai
+      </nav>
+      <h1 class="text-2xl font-bold mt-2">Tambah Pegawai Baru</h1>
+    </header>
+
+    <!-- Form Section -->
+    <section class="mt-6">
+      <form id="pegawai-form" class="bg-white p-6 rounded shadow" onsubmit="return savePegawai(event)">
+        <div class="mb-4">
+          <label class="block text-gray-700">Nama Pegawai:</label>
+          <input type="text" id="pegawai-nama" class="w-full p-2 border rounded" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Tempat Lahir:</label>
+          <input type="text" id="pegawai-tmplahir" class="w-full p-2 border rounded" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Tanggal Lahir:</label>
+          <input type="date" id="pegawai-tgllahir" class="w-full p-2 border rounded" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Jenis Kelamin:</label>
+          <select id="pegawai-jenis-kelamin" class="w-full p-2 border rounded">
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">NIK:</label>
+          <input type="text" id="pegawai-nik" class="w-full p-2 border rounded" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Alamat:</label>
+          <textarea id="pegawai-alamat" class="w-full p-2 border rounded"></textarea>
+        </div>
+        <div class="flex justify-end">
+          <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Simpan</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</div>
+
+<script>
+  function savePegawai(event) {
+    event.preventDefault(); // Mencegah pengiriman form secara default
+    
+    const nama = document.getElementById("pegawai-nama").value;
+    const tmplahir = document.getElementById("pegawai-tmplahir").value;
+    const tgllahir = document.getElementById("pegawai-tgllahir").value;
+    const jenisKelamin = document.getElementById("pegawai-jenis-kelamin").value;
+    const nik = document.getElementById("pegawai-nik").value;
+    const alamat = document.getElementById("pegawai-alamat").value;
+
+    // Simpan data pegawai (misalnya dengan AJAX atau ke server)
+    console.log({ nama, tmplahir, tgllahir, jenisKelamin, nik, alamat });
+    
+    // Tampilkan pesan sukses
+    alert("Data pegawai berhasil disimpan!");
+
+    // Reset form setelah pengiriman
+    document.getElementById("pegawai-form").reset();
+  }
+</script>
+
+</body>
+</html>

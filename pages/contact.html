@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.querySelector("form");
+            const messageList = document.getElementById("message-list");
+            const notificationBadge = document.getElementById("notification-badge");
+
+            let newMessages = 0;
+
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                const message = document.getElementById("message").value;
+
+                if (name && email && message) {
+                    const newMessage = document.createElement("li");
+                    newMessage.classList.add("border", "border-gray-300", "rounded-md", "p-2", "mb-2");
+                    newMessage.innerHTML = `<strong>${name}</strong> (<em>${email}</em>)<br>${message}`;
+                    messageList.appendChild(newMessage);
+
+                    newMessages++;
+                    notificationBadge.textContent = newMessages;
+                    notificationBadge.classList.remove("hidden");
+
+                    form.reset();
+                    alert("Pesan berhasil dikirim!");
+                }
+            });
+        });
+    </script>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-blue-500 text-white p-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold">Hubungi Kami</h1>
+                <p class="text-sm">Kami siap membantu Anda dengan segala pertanyaan atau kebutuhan informasi.</p>
+            </div>
+            <div>
+                <a href="dashboard.html" class="hover:text-blue-300">Home</a>
+            </div>
+            <div class="relative">
+                <button class="relative bg-gray-200 text-gray-800 p-2 rounded-full focus:outline-none">
+                    <span>📩</span>
+                    <span id="notification-badge" class="hidden absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </button>
+                <div class="absolute right-0 mt-2 w-64 bg-white border border-gray-300 rounded-md shadow-lg">
+                    <div class="p-4">
+                        <h3 class="font-bold text-gray-700 mb-2">Kotak Pesan</h3>
+                        <ul id="message-list" class="text-gray-700 max-h-40 overflow-y-auto">
+                            <li class="text-gray-500">Belum ada pesan.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto mt-8">
+        <section class="bg-white shadow-md rounded-md p-6">
+            <h2 class="text-xl font-bold mb-4">Kontak Kami</h2>
+            <p class="text-gray-700 mb-4">Silakan gunakan form di bawah ini untuk menghubungi kami, atau gunakan informasi kontak yang tersedia.</p>
+
+            <!-- Contact Form -->
+            <form class="space-y-4">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Nama</label>
+                    <input type="text" id="name" name="name" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" name="email" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700">Pesan</label>
+                    <textarea id="message" name="message" rows="4" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">Kirim Pesan</button>
+            </form>
+        </section>
+
+        <!-- Contact Information -->
+        <section class="bg-white shadow-md rounded-md p-6 mt-8">
+            <h2 class="text-xl font-bold mb-4">Informasi Kontak</h2>
+            <ul class="text-gray-700 space-y-2">
+                <li><strong>Alamat:</strong> Jl. Pendidikan No. 123, Jakarta, Indonesia</li>
+                <li><strong>Telepon:</strong> +62 21 1234 5678</li>
+                <li><strong>Email:</strong> info@sekolahnf.ac.id</li>
+                <li><strong>Jam Operasional:</strong> Senin - Jumat, 08:00 - 16:00</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center p-4 mt-8">
+        &copy; 2025 Sistem Informasi Sekolah NF. Semua Hak Dilindungi.
+    </footer>
+</body>
+</html>
