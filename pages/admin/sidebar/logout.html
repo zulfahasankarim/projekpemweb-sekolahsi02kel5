@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logout - TechSphere Academy</title>
+    <title>TechSphere Academy</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,7 +11,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            background-color: #63aafc;
             text-align: center;
         }
 
@@ -23,7 +23,7 @@
         }
 
         h1 {
-            color: #dc3545; /* Warna merah untuk logout */
+            color: #3a292b; /* Warna merah untuk logout */
         }
 
         p {
@@ -47,14 +47,14 @@
         <h1>Logout Berhasil</h1>
         <p>Anda telah berhasil keluar dari sistem.</p>
         <p>Anda akan diarahkan ke halaman login dalam <span id="countdown">5</span> detik.</p>
-        <p><a href="../../dashboard.html">Klik di sini jika tidak diarahkan otomatis.</a></p>
+        <p><a href="../../../indexs.html">Klik di sini jika tidak diarahkan otomatis.</a></p>
     </div>
 
     <script>
         // Countdown timer
         let countdown = 5;
         const countdownElement = document.getElementById('countdown');
-        const redirectUrl = '../../dashboard.html'; // Ganti dengan URL halaman login Anda
+        const redirectUrl = '../../../indexs.html'; // Ganti dengan URL halaman login Anda
 
         const interval = setInterval(() => {
             countdown--;

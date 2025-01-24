@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daftar Siswa - Kelas</title>
+  <title>TechSphere Academy</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
+    body {
+      background-color: #6aa6f5; /* Warna biru */
+    }
     .dropdown-content {
       display: none;
       position: relative;
@@ -31,27 +34,34 @@
     .dropdown:hover .dropdown-content {
       display: block;
     }
-
+  
+    .rounded-image {
+      width: 50px; /* Atur lebar gambar */
+      height: 50px; /* Atur tinggi gambar (sama dengan lebar untuk bentuk bulat) */
+      border-radius: 50%; /* Membuat gambar menjadi bulat */
+      object-fit: cover; /* Memastikan gambar terisi penuh dalam lingkaran */
+    }
   </style>
 </head>
-<body class="bg-gray-100">
+<body>
 
 <div class="flex h-screen">
 
   <!-- Sidebar -->
   <aside class="w-64 bg-gray-800 text-white flex flex-col">
     <div class="flex items-center justify-center h-16 bg-gray-900">
-      <h1 class="text-xl font-bold">SEKOLAH.ID</h1>
+      <img src="https://pfst.cf2.poecdn.net/base/image/4f3cb6d604c697f6b68b0a67e10b0555946ece76f0151efe9771e3d33eba15a2?w=1024&h=768&pmaid=270989291" alt="Logo Sekolah" class="rounded-image">
+      <h1 class="text-xl font-bold">TechSphere</h1>
     </div>
     <div class="p-4 text-center border-b border-gray-700">
-      <i class="fas fa-user-circle text-4xl"></i>
-      <p class="mt-2">Ahmad Admin</p>
+      <p class="mt-2"></p>
     </div>
+    <input type="text" id="search-input" placeholder="Search" class="p-2 mx-4 mt-4 rounded bg-gray-700 placeholder-gray-400 text-white focus:outline-none" oninput="filterSidebar()">
     <nav class="mt-4 flex-grow">
-      <ul>
+      <ul id="sidebar-links">
         <li><a href="../../dashboard.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-home mr-2"></i>Dashboard</a></li>
         <li><a href="Pengumuman.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-user mr-2"></i>Pengumuman</a></li>
-        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-user mr-2"></i>Profil</a></li>
+        <li><a href="profil.html" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-user mr-2"></i>Profil</a></li>
         <li class="dropdown">
           <a href="#" class="block py-2 px-4 hover:bg-gray-700"><i class="fas fa-users mr-2"></i>Pegawai</a>
           <div class="dropdown-content">
@@ -214,9 +224,22 @@
     });
   }
 
-</script>
+  // Fungsi untuk memfilter tautan di sidebar
+  function filterSidebar() {
+    const searchInput = document.getElementById('search-input').value.toLowerCase();
+    const sidebarLinks = document.querySelectorAll('#sidebar-links a');
 
+    sidebarLinks.forEach(link => {
+      const linkText = link.innerText.toLowerCase();
+      if (linkText.includes(searchInput)) {
+        link.parentElement.style.display = 'block'; // Tampilkan jika cocok
+      } else {
+        link.parentElement.style.display = 'none'; // Sembunyikan jika tidak cocok
+      }
+    });
+  }
+
+</script>
 
 </body>
 </html>
-t
